@@ -8,7 +8,7 @@ RUN dnf -y install git python2 python2-lxml python2-pyOpenSSL && rm -rf /var/cac
 RUN groupadd -g 1000 media
 RUN useradd -u 1000 -g 1000 -d /source -M media
 
-RUN mkdir /config /data /source /logs && chown media:media /config /data /source
+RUN mkdir /config /data /source && chown media:media /config /data /source
 
 USER media
 
