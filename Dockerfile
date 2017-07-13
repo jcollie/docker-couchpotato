@@ -2,11 +2,14 @@ FROM registry.fedoraproject.org/fedora:26
 
 ENV LANG C.UTF-8
 
-RUN dnf -y update && rm -rf /var/cache/dnf /usr/share/doc /usr/share/man
-RUN dnf -y install git python2 python2-lxml python2-pyOpenSSL && rm -rf /var/cache/dnf /usr/share/doc /usr/share/man
+RUN dnf -y update && \
+    rm -rf /var/cache/dnf /usr/share/doc /usr/share/man
 
-RUN groupadd -g 1000 media
-RUN useradd -u 1000 -g 1000 -d /source -M media
+RUN dnf -y install git python2 python2-lxml python2-pyOpenSSL && \
+    rm -rf /var/cache/dnf /usr/share/doc /usr/share/man
+
+RUN groupadd -g 5000 media
+RUN useradd -u 5000 -g 5000 -d /source -M media
 
 RUN mkdir /config /data /source && chown media:media /config /data /source
 
